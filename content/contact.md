@@ -13,7 +13,7 @@ draft:
     **お問い合わせフォーム**
 
 <div class="contact-form" style="width: 100; margin: auto;">
-    <form action="/contact_sucess" name="contact" method="POST" netlify-honeypot="bot-field" data-netlify-recaptcha="true" value="New lead from %{formName} (%{submissionId} at %{siteName})" enctype="multipart/form-data" id="contact-form" netlify>
+    <form action="/contact_sucess" name="contact" method="POST" netlify-honeypot="bot-field" data-netlify-recaptcha="true" enctype="multipart/form-data" id="contact-form" netlify>
         <div style="display: none;"><input type="text" name="trap" /></div>
         <label for="name">お名前:</label><br>
         <input type="text" id="name" name="name" required><br><br>
