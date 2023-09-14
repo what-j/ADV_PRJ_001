@@ -1,4 +1,4 @@
-baseurl = "https://fanamo.github.io/website_1/"
+baseurl = "https://falsoku.com/"
 title = "ファル速"
 theme = "custom_theme"
 googleAnalytics = ""
@@ -119,7 +119,7 @@ pre = "fa-solid fa-info-circle"
 name = "Contact"
 url = "contact/"
 weight = 8
-pre = "fa-solid fa-phone"
+pre = "fa-solid fa-envelope"
 
 [[menu.main]]
 name = "RSS"
