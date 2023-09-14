@@ -7,7 +7,7 @@ ignoreFiles = [ "\\.Rmd$", "\\.Rmarkdown$", "_cache$",]
 footnotereturnlinkcontents = "↩"
 hasCJKLanguage = true
 enableEmoji = true
-paginate = 12
+paginate = 30
 enableGitInfo = true
 # googleAnalytics = "G-12345ABCDE"
 
