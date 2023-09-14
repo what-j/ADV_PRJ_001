@@ -132,59 +132,59 @@ defaultContentLanguage = "ja"
 defaultContentLanguageInSubdir = true
 
 [languages]
-  [languages.en]
-    # contentDir = 'content/en'
-    disabled = false
-    languageCode = 'en-US'
-    languageDirection = 'ltr'
-    languageName = 'English'
-    title = 'Falcon News'
-    weight = 2
-    [languages.en.params]
-      subtitle = 'Reference, Tutorials, and Explanations'
-  [languages.ja]
-    # contentDir = 'content/ja'
-    disabled = false
-    languageCode = 'ja-JP'
-    languageDirection = 'ltr'
-    languageName = 'Japan'
-    title = 'ファル速'
-    weight = 1
-    [languages.ja.params]
-      subtitle = 'エンタメニュース・話題の総合プラットフォーム'
+[languages.en]
+# contentDir = 'content/en'
+disabled = false
+languageCode = 'en-US'
+languageDirection = 'ltr'
+languageName = 'English'
+title = 'Falcon News'
+weight = 2
+[languages.en.params]
+subtitle = 'Reference, Tutorials, and Explanations'
+[languages.ja]
+# contentDir = 'content/ja'
+disabled = false
+languageCode = 'ja-JP'
+languageDirection = 'ltr'
+languageName = 'Japan'
+title = 'ファル速'
+weight = 1
+[languages.ja.params]
+subtitle = 'エンタメニュース・話題の総合プラットフォーム'
 
 [frontmatter]
-  lastmod = ':lastmod'
+lastmod = ':lastmod'
 
 [minify]
-  disableCSS = false
-  disableHTML = false
-  disableJS = false
-  disableJSON = false
-  disableSVG = false
-  disableXML = false
-  minifyOutput = false
-  [minify.tdewolff]
-    [minify.tdewolff.css]
-      keepCSS2 = true
-      precision = 0
-    [minify.tdewolff.html]
-      keepComments = false
-      keepConditionalComments = true
-      keepDefaultAttrVals = true
-      keepDocumentTags = true
-      keepEndTags = true
-      keepQuotes = true
-      keepWhitespace = false
-    [minify.tdewolff.js]
-      keepVarNames = false
-      precision = 0
-      version = 2022
-    [minify.tdewolff.json]
-      keepNumbers = false
-      precision = 0
-    [minify.tdewolff.svg]
-      keepComments = false
-      precision = 0
-    [minify.tdewolff.xml]
-      keepWhitespace = false
+disableCSS = false
+disableHTML = false
+disableJS = false
+disableJSON = false
+disableSVG = false
+disableXML = false
+minifyOutput = false
+[minify.tdewolff]
+[minify.tdewolff.css]
+keepCSS2 = true
+precision = 0
+[minify.tdewolff.html]
+keepComments = false
+keepConditionalComments = true
+keepDefaultAttrVals = true
+keepDocumentTags = true
+keepEndTags = true
+keepQuotes = true
+keepWhitespace = false
+[minify.tdewolff.js]
+keepVarNames = false
+precision = 0
+version = 2022
+[minify.tdewolff.json]
+keepNumbers = false
+precision = 0
+[minify.tdewolff.svg]
+keepComments = false
+precision = 0
+[minify.tdewolff.xml]
+keepWhitespace = false
