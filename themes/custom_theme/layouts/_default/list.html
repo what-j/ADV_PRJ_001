@@ -1,0 +1,113 @@
+{{ partial "header.html" . }}
+{{ partial "info.html" . }}
+{{ partial "sub.html" . }}
+
+
+<!-- <div class="scroll-box" style="width: auto;">
+    {{ range sort .Site.RegularPages.ByDate.Reverse }}
+    <ul>
+    <li>
+        <a href="{{ .RelPermalink }}"> {{ .Date.Format "2006-01-02 03:04:05" }} / {{ .LinkTitle }} </a>
+    </li>
+    </ul>
+    {{ end }}
+</div> -->
+
+<div class="container">
+<div class="container-main">
+<main class="list">
+{{ $pages := .Pages }}
+{{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
+{{ $paginator := .Paginate (where $pages "Section" "!=" "") }}
+
+{{ $sortParam := .Params.sort }}
+
+{{ $range := $paginator.Pages.ByDate.Reverse }}
+{{ if eq $sortParam "latest" }}
+    {{ $range = $paginator.Pages.ByDate.Reverse }}
+{{ else if eq $sortParam "popular" }}
+    {{ $range = $paginator.Pages.ByTitle }}
+{{ else }}
+    {{ $range = $paginator.Pages.ByWeight }}
+{{ end }}
+
+{{ range $range.ByDate.Reverse }}
+<section class="article-list">
+<div class="article-list-item-head">
+
+    <div class="categories">
+        <ul>
+        {{ with .Params.categories }}
+        {{ range first 1 . }}
+        <li> <a href="{{ relURL (print "categories/" . | urlize) }}">{{ . }}</a> </li>
+        {{ end }}
+        {{ else }}
+        <a>{{ default "" .Site.Params.text.uncategorized }}</a>
+        {{ end }}
+        </ul>
+    </div>
+
+    <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+</div>
+<div class="thumbnail-wraper">
+    <a href="{{ .RelPermalink }}">
+    {{ with .Resources.GetMatch (printf "%s" .Params.thumbnail) }}
+    <div class="thumbnail"><img src="{{ relURL .Permalink }}" alt="Thumbnail" /></div>
+    {{ else }}
+    {{ with  .Params.thumbnail }}
+    <div class="thumbnail"><img src="{{ relURL .}}" alt="Thumbnail" /></div>
+    {{ else }}
+    {{ $img := findRE "<img src=\"[^\"]+\"" .Content 1 }}
+    {{ range $img }}
+    <div class="thumbnail">{{ (print . " alt=\"Thumbnail\" />") | safeHTML }}</div>
+    {{ end }}
+    {{ end }}
+    {{ end }}
+</div>
+<div class="article-list-item-mid">
+    {{ if .Params.author }}
+    <div class="author">{{ partial "author_names.html" . }}</div>
+    {{ end }}
+    <div class="date">{{ .PublishDate | time.Format "2006-01-02 15:04"  }}</div>
+</div>
+<div class="summary">
+{{ with .Description }}
+    {{ $.Scratch.Set "summary" (markdownify .) }}
+{{ else }}
+    {{ $.Scratch.Set "summary" ((delimit (findRE "(<p.*?>(.|\n)*?</p>\\s*)+" .Content) "") | plainify | truncate (default 200 .Site.Params.summary_length) (default "" .Site.Params.text.truncated ) | replaceRE "&amp;" "&" | safeHTML) }}
+{{ end }}
+{{ $.Scratch.Get "summary" }}
+</a>
+</div>
+<div class="article-list-item-foot">
+<!-- <div class="categories">
+    {{ with .Params.categories }}
+    {{ range first 1 . }}
+    <a href="{{ relURL (print "/categories/" . | urlize) }}">{{ . }}</a>
+    {{ end }}
+    {{ else }}
+    <a>{{ default "" .Site.Params.text.uncategorized }}</a>
+    {{ end }}
+</div> -->
+<div class="tags">
+    {{ $tags := .Params.tags }}
+    {{ $count := 0 }}
+    <ul>
+    {{ range $index, $tag := $tags }}
+    {{ $encodedTagName := urlquery $tag }}
+    <li><a href="{{ relURL (print "tags/" $encodedTagName | safeURL ) }}">{{ $tag }}</a></li>
+    {{ end }}
+    </ul>
+</div>
+
+</div>
+</section>
+
+{{ end }}
+</main>
+
+<nav>{{ template "_internal/pagination.html" . }}</nav>
+</div>
+{{ partial "extra.html" . }}
+</div>
+{{ partial "footer.html" . }}

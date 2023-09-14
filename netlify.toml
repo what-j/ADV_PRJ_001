@@ -1,0 +1,36 @@
+
+[build]
+  publish = "public"
+  command = "hugo --gc --minify --baseURL $HUGO_BASE_URL"
+
+[build.processing]
+  command = "cp robots.txt public/robots.txt"
+  cwd = "/"
+
+[context.production.environment]
+  HUGO_VERSION = "0.118.2"
+  HUGO_ENV = "production"
+  HUGO_ENABLEGITINFO = "true"
+  HUGO_BASE_URL = "https://falsoku.com"
+
+[context.deploy-preview]
+command = "hugo --gc --minify --buildFuture--baseURL $DEPLOY_PRIME_URL"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.118.2"
+
+[context.branch-deploy]
+command = "hugo --gc --minify--baseURL $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+HUGO_VERSION = "0.118.2"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 301
+
+[[headers]]
+  for = "/robots.txt"
+    [headers.values]
+    Content-Type = "text/plain"

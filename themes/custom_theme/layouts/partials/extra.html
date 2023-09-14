@@ -1,0 +1,63 @@
+<aside class="container-extra">
+    <div class="scroll-box-extra">
+        <div class="related">
+            {{ $related := .Site.RegularPages.Related . | first 5 }}
+            {{ with $related }}
+            <h3>関連記事</h3>
+            <ul>
+                {{ range $related }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </div>
+    </div>
+</aside>
+
+<!-- <button class="scroll-button scroll-up-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="25" fill="#ffdd00" />
+    </svg>
+  </button>
+
+  <button class="scroll-button scroll-down-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+      <circle cx="25" cy="25" r="25" fill="#ffdd00" />
+    </svg>
+  </button> -->
+
+<!--
+<script>
+    function toggleScrollButtons() {
+      const scrollButtons = document.querySelectorAll('.scroll-button');
+    //   if (window.scrollY > window.innerHeight / 4) {
+        scrollButtons.forEach(button => {
+          button.style.opacity = '0.5';
+        });
+    //   } else {
+        // scrollButtons.forEach(button => {
+        //   button.style.opacity = '0';
+        // });
+    //   }
+    }
+
+    window.addEventListener('scroll', toggleScrollButtons);
+
+    const scrollUpButton = document.querySelector('.scroll-up-button');
+    scrollUpButton.addEventListener('click', function() {
+      window.scrollBy({
+        top:  -window.innerHeight / 2,
+        behavior: 'smooth'
+      });
+    });
+
+    const scrollDownButton = document.querySelector('.scroll-down-button');
+    scrollDownButton.addEventListener('click', function() {
+      window.scrollBy({
+        top:  window.innerHeight / 2,
+        behavior: 'smooth'
+      });
+    });
+  </script> -->
+
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="ad3ro1" data-description="Support me on Buy me a coffee!" data-message="🤗ご支援はこちら " data-color="#ffdd00" data-position="Right" data-x_margin="18" data-y_margin="18"></script>

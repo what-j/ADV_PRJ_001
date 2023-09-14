@@ -1,0 +1,44 @@
+{{ define "custom_sort" }}
+{{ $sort := .Params.sort }}
+{{ $pages := .Pages }}
+{{ if .IsHome }}
+    {{ $pages = .Site.RegularPages }}
+{{ end }}
+
+{{ if eq $sort "popular" }}
+    {{ $pages = $pages | sort "Params.popular" }}
+{{ else if eq $sort "latest" }}
+    {{ $pages = $pages | sort "Date" }}
+{{ else if eq $sort "trend" }}
+    {{ $pages = $pages | sort "Params.trend" }}
+{{ else if eq $sort "category" }}
+    {{ $groupedPages := slice }}
+    {{ range $pages }}
+        {{ $latest := where .Site.RegularPages "Params.latest" "!=" nil | first 50 }}
+        {{ range $latest }}
+            {{ with index $groupedPages $latest }}
+                {{ $groupedPages = $groupedPages | append (dict "DateKey" $latest "Pages" (slice .)) }}
+            {{ else }}
+                {{ $groupedPages = $groupedPages | append (dict "DateKey" $latest "Pages" (slice .)) }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+    {{ $sortedGroupedPages := slice }}
+    {{ range $groupedPages }}
+        {{ $sortedGroupedPages = $sortedGroupedPages | append . }}
+    {{ end }}
+
+    {{ $sortedGroupedPages = $sortedGroupedPages | sort "DateKey" }}
+    {{ $groupedPages = slice }}
+    {{ range $sortedGroupedPages }}
+        {{ $groupedPages = $groupedPages | append .Pages }}
+    {{ end }}
+
+    {{ $pages = $groupedPages }}
+{{ end }}
+
+{{ range $pages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+{{ end }}
+{{ end }}

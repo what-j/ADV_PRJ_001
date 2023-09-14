@@ -1,0 +1,162 @@
+baseurl = "https://fanamo.github.io/website_1/"
+title = "ファル速"
+theme = "custom_theme"
+googleAnalytics = ""
+disqusShortname = ""
+ignoreFiles = [ "\\.Rmd$", "\\.Rmarkdown$", "_cache$",]
+footnotereturnlinkcontents = "↩"
+hasCJKLanguage = true
+enableEmoji = true
+paginate = 12
+enableGitInfo = true
+# googleAnalytics = "G-12345ABCDE"
+
+[permalinks]
+post = "/post/:year/:month/:day/:slug/"
+# news = "/:sections/:year/:month/:day/:slug/"
+
+[taxonomies]
+category = 'categories'
+series = 'series'
+tags = 'tags'
+
+[params]
+description = "A website built through Hugo and blogdown."
+footer = "&copy; [Falcon]() 2023 | [利用規約](https://fanamo.github.io/website_1/terms/) | [サイトポリシー](https://fanamo.github.io/website_1//) | [プライバシーポリシー](https://fanamo.github.io/website_1/privacy_policy/) | [広告掲載](https://fanamo.github.io/website_1/adv/) "
+summary_length = 300
+logo = "/static/images/logo.svg"
+icon = 'pdf'
+
+[params.text]
+# back = "&larr; 戻る"
+# edit = "進む &rarr;"
+truncated = "&hellip;"
+
+[markup.highlight]
+codeFences = false
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[params.banner]
+    src = "/images/logo.svg"
+    alt = "logo"
+
+[params.links]
+# End user relevant links. These will show up on left side of footer and in the community page if you have one.
+[[params.links.user]]
+	name = "User mailing list"
+	url = "https://falsoku.com/mail"
+	icon = "fa fa-envelope"
+        desc = "Discussion and help from your fellow users"
+[[params.links.user]]
+	name ="Twitter"
+	url = "https://falsoku.com/twitter"
+	icon = "fab fa-twitter"
+        desc = "Follow us on Twitter to get the latest news!"
+# Developer relevant links. These will show up on right side of footer and in the community page if you have one.
+[[params.links.developer]]
+	name = "GitHub"
+	url = "https://github.com/google/docsy"
+	icon = "fab fa-github"
+        desc = "Development takes place here!"
+[[params.links.developer]]
+	name = "Slack"
+	url = "https://falsoku.com/slack"
+	icon = "fab fa-slack"
+        desc = "Chat with other project developers"
+[[params.links.developer]]
+	name = "Developer mailing list"
+	url = "https://falsoku.com/mail"
+	icon = "fa fa-envelope"
+        desc = "Discuss development issues around the project"
+
+[menu]
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+pre = "fa-solid fa-house"
+
+# [[menu.main]]
+# name = "タグ"
+# url = "tags/"
+# weight = 2
+# pre = "fa-solid fa-tag"
+
+# [[menu.main]]
+# name = "カテゴリ"
+# url = "categories/"
+# weight = 3
+# pre = "fa-solid fa-folder"
+
+[[menu.main]]
+name = "Info"
+url = "about/"
+weight = 4
+pre = "fa-solid fa-info-circle"
+
+# [[menu.main]]
+# name = "Discord"
+# url = "discord"
+# weight = 5
+# pre = "fa-brands fa-discord fa-shake"
+
+# [[menu.main]]
+# name = "Twitter"
+# url = "twitter"
+# weight = 6
+# pre = "fa-brands fa-square-x-twitter"
+# post = "<span class='alert'>New!</span>"
+
+# [[menu.main]]
+# name = "GitHub"
+# weight = 7
+# url = "https://github.com/google/docsy/"
+# pre = "<i class='fa-brands fa-github'></i>"
+
+[[menu.main]]
+name = "Contact"
+url = "contact/"
+weight = 8
+pre = "fa-solid fa-phone"
+
+[[menu.main]]
+name = "RSS"
+url = "index.xml"
+weight = 9
+pre = "fa-solid fa-rss"
+
+languageCode = "ja-jp"
+defaultContentLanguage = "ja"
+defaultContentLanguageInSubdir = true
+
+[languages]
+  [languages.en]
+    # contentDir = 'content/en'
+    disabled = false
+    languageCode = 'en-US'
+    languageDirection = 'ltr'
+    languageName = 'English'
+    title = 'Falcon News'
+    weight = 2
+    [languages.en.params]
+      subtitle = 'Reference, Tutorials, and Explanations'
+  [languages.ja]
+    # contentDir = 'content/ja'
+    disabled = false
+    languageCode = 'ja-JP'
+    languageDirection = 'ltr'
+    languageName = 'Japan'
+    title = 'ファル速'
+    weight = 1
+    [languages.ja.params]
+      subtitle = 'エンタメニュース・話題の総合プラットフォーム'
+
+[frontmatter]
+  lastmod = ':lastmod'
+
+[sitemap]
+changefreq = "monthly"
+filename = "sitemap.xml"
+priority = 0.5

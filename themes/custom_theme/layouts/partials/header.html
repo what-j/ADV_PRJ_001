@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="{{ .Summary | plainify }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:title" content="{{.Title}}">
+    <meta property="og:description" content="{{ .Description }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ .Params.image }}">
+    {{ $.Scratch.Set "Title" (default .Title (index .Site.Params.text (print "title_" (lower .Title)))) }}
+    <title>{{ if eq ($.Scratch.Get "Title") .Site.Title }}{{ .Site.Title }}{{ else }}{{ ($.Scratch.Get "Title") }} | {{ .Site.Title }}{{ end }}</title>
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+  </head>
+
+  <body{{if .IsPage}} class="page"{{ end }}>
+    <div class="header">
+
+    {{ partial "banner.html" . }}
+    <nav class="nav">
+      <div>
+        <ul class="menu">
+            {{ range .Site.Menus.main }}
+            {{ $icon := printf "<i class=\"%s\"></i>" .Pre }}
+            <li><a href="{{ .URL | absLangURL }}">{{ $icon | safeHTML }} {{ .Name }}</a></li>
+            </span></a></li>
+            {{ end }}
+        </ul>
+      </div>
+    </nav>
+</div>
+</div>

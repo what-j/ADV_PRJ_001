@@ -1,0 +1,60 @@
+name: Create files, Push to repo
+
+on:
+  schedule:
+    # - cron: '*/5 6-7,12-13,18-19 * * 0-7' # every 5min 6:00-7, 12:00-13, 18:00-19
+    # - cron: '0 0 12 * * ?' # every day 12:00 PM.
+    # - cron: '0 15 10 ? * *' # 10:15 AM every day.
+    # - cron: '0 15 10 * * ? 2011' # 10:15 AM every day during the year 2011.
+    # - cron: '0 0/5 14 * * ?' # 5 minutes starting at 2 PM and ending at 2:55 PM, every day.
+    # - cron: '0 15 10 15 * ?' # 10:15 AM on the 15th day of every month.
+    # - cron: '0 15 10 ? * 6L' # 10:15 AM on the last Friday of every month.
+    # - cron: '0 15 10 ? * 6#3' 10:15 AM on the third Friday of every month.
+    - cron: '*/5 * * * *' # every 5min
+    # - cron: '*/5 * * * * *' # every sec 5sec
+
+
+  workflow_dispatch:
+
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+
+jobs:
+  generate_post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10.13'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script
+        run: python scripts/run.py -i data/feeds.yaml -w data/exception_words.yaml -r -sl 10
+
+      - name: Commit files
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add -A
+          git commit -a -m "Add changes"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
