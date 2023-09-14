@@ -781,6 +781,7 @@ form#contact-form {
 input[type="text"],
 input[type="email"],
 textarea#message {
+  resize: none;
   font-size: 1em;
   width: 100%;
   max-width: 100%;
