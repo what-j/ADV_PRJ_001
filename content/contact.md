@@ -13,7 +13,7 @@ draft:
     **お問い合わせフォーム**
 
 <div class="contact-form">
-    <form name="contact" method="POST" enctype="multipart/form-data" id="contact-form" netlify-honeypot="bot-field" data-netlify-recaptcha="true" data-netlify="true">
+    <form action="/contact_success" name="contact" method="POST" enctype="multipart/form-data" id="contact-form" netlify-honeypot="bot-field" data-netlify-recaptcha="true" netlify>
         <label for="name">お名前:</label><br>
         <input type="text" id="name" name="name" required><br><br>
         <label for="email">メールアドレス:</label><br>
