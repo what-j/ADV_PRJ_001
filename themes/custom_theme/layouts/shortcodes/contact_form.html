@@ -1,5 +1,5 @@
 <div class="contact-form">
-    <form name="contact" method="POST" netlify-honeypot="bot-field" data-netlify-recaptcha="true" value="New lead from %{formName} (%{submissionId} at %{siteName})" enctype="multipart/form-data" id="contact-form" netlify>
+    <form action="{{ "/contact_success/" | relURL }}" name="contact" method="POST" netlify-honeypot="bot-field" data-netlify-recaptcha="true" value="New lead from %{formName} (%{submissionId} at %{siteName})" enctype="multipart/form-data" id="contact-form" netlify>
         <input type="hidden" name="form-name" value="contact" /><br><br>
         <div style="display: none;"><input type="text" name="trap" /></div>
         <label for="name">お名前:</label><br>
