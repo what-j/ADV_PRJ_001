@@ -11,3 +11,16 @@ pre code {
   font-family: "Lucida Console", Monaco, 'STKaiti', 'KaiTi', 'SimKai', monospace;
   font-size: .85em;
 }
+
+@font-face {
+  font-family: 'ComicHeroShadow';
+  src: url('comic-hero-shadow.ttf') format('truetype');
+  font-weight: bolder;
+}
+
+.menu li {
+  display: inline-block;
+  font-family: 'ComicHeroShadow', sans-serif;
+  font-weight: bolder;
+  font-size: 1em;
+}
