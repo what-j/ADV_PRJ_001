@@ -12,8 +12,8 @@ draft:
 
     **お問い合わせフォーム**
 
-<div class="contact-form" enctype="multipart/form-data" style="width: 100; margin: auto;">
-    <form action="/contact_sucess" name="contact" method="POST" id="contact-form" netlify>
+<div class="contact-form" style="width: 100; margin: auto;">
+    <form action="/contact_sucess" name="contact" method="POST" enctype="multipart/form-data" id="contact-form" netlify>
         <div style="display: none;"><input type="text" name="trap" /></div>
         <label for="name">お名前:</label><br>
         <input type="text" id="name" name="name" required><br><br>
