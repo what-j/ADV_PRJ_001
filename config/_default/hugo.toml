@@ -22,7 +22,7 @@ tags = 'tags'
 
 [params]
 description = "A website built through Hugo and blogdown."
-footer = "&copy; [Falcon]() 2023 | [利用規約](https://fanamo.github.io/website_1/terms/) | [サイトポリシー](https://fanamo.github.io/website_1//) | [プライバシーポリシー](https://fanamo.github.io/website_1/privacy_policy/) | [広告掲載](https://fanamo.github.io/website_1/adv/) "
+footer = "&copy; [Falcon]() 2023 | [利用規約](https://falsoku.com/terms/) | [サイトポリシー](https://falsoku.com/site_policy/) | [プライバシーポリシー](https://falsoku.com/privacy_policy/) | [広告掲載](https://falsoku.com/adv/) "
 summary_length = 300
 logo = "/static/images/logo.svg"
 icon = 'pdf'
