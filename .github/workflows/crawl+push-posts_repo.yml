@@ -10,8 +10,10 @@ on:
     # - cron: '0 15 10 15 * ?' # 10:15 AM on the 15th day of every month.
     # - cron: '0 15 10 ? * 6L' # 10:15 AM on the last Friday of every month.
     # - cron: '0 15 10 ? * 6#3' 10:15 AM on the third Friday of every month.
-    - cron: '*/5 * * * *' # every 5min
+    - cron: '0 */12 * * *' # every 12 hours
+    # - cron: '*/5 * * * *' # every 5min
     # - cron: '*/5 * * * * *' # every sec 5sec
+    # - cron: '0 0 14 * * ?' # 5 starting at 2 PM
 
 
   workflow_dispatch:
