@@ -1,4 +1,4 @@
-baseurl = "https://falsoku.com/"
+baseurl = "https://falsoku.com"
 title = "ファル速"
 theme = "custom_theme"
 googleAnalytics = ""
