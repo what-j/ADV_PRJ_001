@@ -25,11 +25,6 @@ command = "hugo --gc --minify--baseURL $DEPLOY_PRIME_URL"
 [context.branch-deploy.environment]
 HUGO_VERSION = "0.118.2"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 301
-
 [[headers]]
   for = "/robots.txt"
     [headers.values]
