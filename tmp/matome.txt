@@ -3,7 +3,6 @@ http://blog.livedoor.jp/kinisoku
 http://bipblog.com
 http://alfalfalfa.com
 http://michaelsan.livedoor.biz
-http://workingnews.blog117.fc2.com/?xml
 http://blog.livedoor.jp/nwknews
 http://onecall2ch.com
 http://jin115.com
@@ -13,8 +12,7 @@ http://rabitsokuhou.2chblog.jp
 http://kankeinai.blog.jp
 http://lifehack2ch.livedoor.biz
 https://idobata-kaigis.com
-https://world-study.jp/
-https://hagelicious.com/
+https://world-study.jp/　
 http://geikuchi.com/
 http://trendcatch2020.com/
 http://ocalt.work/
@@ -25,7 +23,6 @@ http://spomani.xyz/
 http://outdooor.blog.jp/
 https://jujutsusokuho.com/
 https://matome-today.blog.jp/
-https://news-matome.sakura.ne.jp/
 https://neko-dan.net/
 http://akiomatome.dxdachamo.jp/
 https://xn--eckyfna8731bop8c.jp/

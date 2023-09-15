@@ -39,14 +39,6 @@ items:
   limit: 1
   feed_url:
   - http://michaelsan.livedoor.biz/atom.xml
-- name: blog117
-  url: http://workingnews.blog117.fc2.com/?xml
-  categories: エンタメ
-  tags: []
-  locale: ja-jp
-  limit: 1
-  feed_url:
-  - http://workingnews.blog117.fc2.com/?xml
 - name: nwknews
   url: http://blog.livedoor.jp/nwknews
   categories: エンタメ
@@ -134,14 +126,6 @@ items:
   limit: 1
   feed_url:
   - https://world-study.jp/feed
-- name: hagelicious
-  url: https://hagelicious.com/
-  categories: エンタメ
-  tags: []
-  locale: ja-jp
-  limit: 1
-  feed_url:
-  - https://hagelicious.com/feed/
 - name: geikuchi
   url: http://geikuchi.com/
   categories: エンタメ
@@ -198,14 +182,6 @@ items:
   limit: 1
   feed_url:
   - https://matome-today.blog.jp/index.rdf
-- name: news-matome
-  url: https://news-matome.sakura.ne.jp/
-  categories: エンタメ
-  tags: []
-  locale: ja-jp
-  limit: 1
-  feed_url:
-  - https://news-matome.sakura.ne.jp/feed
 - name: neko-dan
   url: https://neko-dan.net/
   categories: エンタメ
