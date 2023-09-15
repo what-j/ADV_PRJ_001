@@ -40,7 +40,7 @@ body {
   position: fixed;
 }
 
-.nav div, .container-main, .copyright, .menu {
+.container-main, .copyright, .menu {
   max-width: 1200px;
   margin: auto;
   padding: 0 15px;
@@ -48,8 +48,9 @@ body {
 .page-item {
   font-size: 1.2em;
 }
-.page .nav div, .copyright, .page .menu {
+.nav div, .page .nav div, .copyright, .page .menu {
   max-width: 900px;
+  margin: auto;
 }
 
 @media (max-width: 930px) {
@@ -675,6 +676,7 @@ ul {
 .container-sub {
   float: left;
   width: 200px;
+  height: 100%;
   padding: 0 10px;
 }
 
@@ -697,6 +699,14 @@ ul {
   text-decoration: none;
   color: #333;
 }
+
+.container-sub img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+
 
 .scroll-box-sub li:hover {
   color: #333;
