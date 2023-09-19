@@ -25,7 +25,15 @@ description = "A website built through Hugo and blogdown."
 footer = "&copy; [falsoku]() 2023 | [利用規約](/terms/) | [サイトポリシー](/site_policy/) | [プライバシーポリシー](/privacy_policy/) | [広告掲載](/adv/) "
 summary_length = 300
 logo = "/static/images/logo.svg"
-icon = 'pdf'
+
+[params.meta]
+# description = ""
+# author = ""
+favicon = true
+svg = true
+faviconVersion = ""
+msColor = "#ffffff"
+iosColor = "#ffffff"
 
 [params.text]
 # back = "&larr; 戻る"
