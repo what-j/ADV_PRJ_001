@@ -712,6 +712,11 @@ ul {
   object-fit: contain;
 }
 
+.scroll-box-sub-pr li:hover {
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
 .img-link {
   float: left;
   width: 100%;
