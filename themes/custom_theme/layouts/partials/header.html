@@ -4,12 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <meta name="description" content="{{ .Summary | plainify }}">
+    <meta name="theme-color" content="#ffdd00" />
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:title" content="{{.Title}}">
     <meta property="og:description" content="{{ .Description }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:image" content="{{ .Params.image }}">
+    <meta name="twitter:card" content="summary_large_image" />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="./static/icons/logo_512x.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="./static/icons/logo_512x.png"
+    />
+    <link rel="manifest" href="./manifest.webmanifest" />
     {{ $.Scratch.Set "Title" (default .Title (index .Site.Params.text (print "title_" (lower .Title)))) }}
     <title>{{ if eq ($.Scratch.Get "Title") .Site.Title }}{{ .Site.Title }}{{ else }}{{ ($.Scratch.Get "Title") }} | {{ .Site.Title }}{{ end }}</title>
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
