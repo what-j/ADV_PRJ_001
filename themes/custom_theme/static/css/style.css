@@ -32,13 +32,28 @@ body {
 }
 
 .header {
-  background: #ffdd00ee;
+  background: #ffdd00ee ;
+  background: #ffdd00ee url(../images/coma_01_bg_w.svg) no-repeat center center / 200%;
+  animation: coma_01_bg 0.09s linear infinite;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
   position: fixed;
 }
+
+/* @keyframes coma_01_bg {
+  0% {
+    background-size: 300%;
+    }
+  50% {
+    background-size: 150%;
+    }
+    }
+  100% {
+    background-size: 100%;
+   }
+} */
 
 .container-main, .copyright, .menu {
   max-width: 1200px;
