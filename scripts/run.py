@@ -194,8 +194,10 @@ def generate_hugo_posts(rss_urls, site_no, site_name, article_urls, output_dir, 
                     r'(.)\1+':'',
                     r'\d+': '',
                     r'([ぁ-んー])\1+': '',
-                    r'[ぁ-んー]{1,2}': '',
-                    r'[ァ-ンー]{1,2}': '',
+                    r'([ァ-ンー])\1+': '',
+                    r'[ぁ-んー]{2,}': '',
+                    r'[ァ-ンー]{2,}': '',
+                    r'[一-鿄]{1,2}': '',
                     r'\b[a-zA-Z]{1,2}\b': '',
                     # 'いる': '',
                     # 'ある': '',
@@ -266,9 +268,9 @@ def safe_yaml(text, wordlist):
         # '"': '\"',
         # '!': '\!',
         # '|': '\|',
+        # '<br>':'',
         '"':'\'',
         ':':'',
-        '<br>':'',
         '\n': ' ',
         '\u3000': ' ',
     }
@@ -288,10 +290,9 @@ def safe_yaml(text, wordlist):
     for char, replacement in char_mapping.items():
         text = text.replace(char, replacement)
 
+    text = re.sub(r'\n+', '\n', text)
+    text = re.sub(r'(<br>)+', '<br>', text)
     text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'\n{2,}?', '\n', text)
-    text = re.sub(r'(<br>){2,}?', '<br>', text)
-
 
     exclusion_words = {
     }
