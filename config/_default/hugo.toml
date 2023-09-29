@@ -21,10 +21,11 @@ series = 'series'
 tags = 'tags'
 
 [params]
-description = "A website built through Hugo and blogdown."
+description = "An entertainment news site that delivers the latest and fastest selection of news in all genres, including sports, culture, and variety."
 footer = "&copy; [falsoku]() 2023 | [利用規約](/terms/) | [サイトポリシー](/site_policy/) | [プライバシーポリシー](/privacy_policy/) | [広告掲載](/adv/) "
 summary_length = 300
-logo = "/static/images/logo.svg"
+logo = "/assets/images/logo.svg"
+images = ["/assets/images/logo.svg"]
 
 [params.meta]
 # description = ""

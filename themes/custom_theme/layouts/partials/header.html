@@ -12,8 +12,8 @@
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:image" content="{{ .Params.image }}">
     <!-- <meta property="article:publisher" content="(6)FacebookページのURL" /> -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <!-- <meta name="twitter:site" content="@"> -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="{{$.Site.Params.twitterID}}">
     <meta name="twitter:title" content="ファル速 | 最新・最速のエンタメニュースサイト！" />
     <meta name="twitter:description" content="スポーツ・カルチャー・バラエティなど、あらゆるジャンルの厳選ニュースを最新・最速でお届けする、総合エンタメニュースサイトです。">
     <meta name="twitter:image" content="../../static/images/logo_512x.png">
@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+    {{ template "_internal/opengraph.html" . }}
+    <!-- {{ template "_internal/twitter_cards.html" . }} -->
+
   </head>
 
   <body{{if .IsPage}} class="page"{{ end }}>
