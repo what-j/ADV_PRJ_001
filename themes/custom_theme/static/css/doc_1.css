@@ -1,0 +1,194 @@
+@font-face {
+  font-family: 'ZenKurenaido';
+  /* src: url('../fonts/ZenKurenaido-Regular.ttf') format('truetype'); */
+  font-weight: bolder;
+}
+
+.container {
+  column-count: 2;
+  column-gap: 20px;
+  column-fill: auto;
+  height: 297mm;
+  width: 210mm;
+  padding: 20mm;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+html {
+    font-size: 12pt;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000;
+    font-family: 'ZenKurenaido', "MS Mincho", serif, monospace;
+    font-weight: bold;
+    text-decoration-skip: none;
+    text-align: justify;
+    margin: 15.4mm;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, .cm-s-inner, .footnote-line {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 1em;
+}
+
+h2, h3, em, .cm-keyword {
+    text-decoration: underline;
+}
+
+blockquote, strong {
+    color: darkblue;
+}
+
+blockquote {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+a, .footnote-line {
+    color: #333;
+}
+
+em, strong {
+    font-style: normal;
+}
+
+ul {
+    list-style-type: square;
+}
+
+#write {
+    max-width: 60em;
+    padding: 10px;
+}
+
+#footer p {
+    border-top: 2px solid #333;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+/* Codes */
+.cm-s-inner {
+    border-left: 2px solid #333;
+    padding-left: 1em;
+    margin: 5px 0;
+}
+
+.cm-s-inner * {
+    color: #333 !important;
+}
+
+/* Numbering */
+h1 {
+    counter-reset: h2;
+}
+
+h2 {
+    counter-reset: h3;
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h2) ". ";
+}
+
+#write h3:before {
+    counter-increment: h3;
+    content: counter(h2) "." counter(h3) ". ";
+}
+
+/* Custom */
+.document-id, .timestamp, .from-group, .from-name, .from-mark, .closing-text, .closing, .signature {
+    text-align: right;
+}
+
+.subtitle, .memo-mark {
+    text-align: center;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+  table-layout: fixed;
+  border: 2px solid black;
+}
+
+.table-caption {
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+}
+
+.table-caption p {
+    text-align: center;
+    border-bottom: 2px double black;
+    padding-bottom: 2px;
+    display: inline-block;
+}
+
+.table-caption-desc {
+    text-align: center;
+    width: 100%;
+}
+
+.date {
+  text-align: center;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.unit {
+  text-align: right;
+  display: inline-block;
+}
+
+thead {
+  background-color: #eee;
+}
+
+th {
+  font-weight: bold;
+  text-align: center;
+  border: 1px solid black;
+  border-bottom: 2px double black;
+}
+
+td {
+  border-bottom: none;
+  border-right: 1px solid black;
+  text-align: center;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* tr td:first-child {
+  border-right: 1px solid black;
+} */
+
+/* tr td:last-child {
+  border-left: none;
+} */
+
+/* tbody tr:last-child td {
+  border-top: 2px double black;
+} */
+
+@media print {
+  .container {
+      page-break-after: always;
+    }
+}
