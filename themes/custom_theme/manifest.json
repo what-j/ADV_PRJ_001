@@ -1,0 +1,9 @@
+{
+  "name": "falsoku.com",
+  "short_name": "falsoku",
+  "theme_color": "#ffdd00",
+  "background_color": "#ffdd00",
+  "display": "browser",
+  "scope": "/",
+  "start_url": "/"
+}

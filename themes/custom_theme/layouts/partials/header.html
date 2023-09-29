@@ -16,15 +16,15 @@
     <link
       rel="apple-touch-icon"
       sizes="512x512"
-      href="./static/icons/logo_512x.png"
+      href="../../static/images/logo_512x.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="512x512"
-      href="./static/icons/logo_512x.png"
+      href="../../static/images/logo_512x.png"
     />
-    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="manifest" href="../../manifest.json" />
     {{ $.Scratch.Set "Title" (default .Title (index .Site.Params.text (print "title_" (lower .Title)))) }}
     <title>{{ if eq ($.Scratch.Get "Title") .Site.Title }}{{ .Site.Title }}{{ else }}{{ ($.Scratch.Get "Title") }} | {{ .Site.Title }}{{ end }}</title>
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
