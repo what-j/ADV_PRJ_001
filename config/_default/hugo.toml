@@ -10,6 +10,7 @@ enableEmoji = true
 paginate = 30
 enableGitInfo = true
 # googleAnalytics = "G-12345ABCDE"
+enableRobotsTXT = true
 
 [permalinks]
 post = "/post/:year/:month/:day/:slug/"
