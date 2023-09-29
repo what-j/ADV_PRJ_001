@@ -146,7 +146,7 @@ disabled = false
 languageCode = 'en-US'
 languageDirection = 'ltr'
 languageName = 'English'
-title = 'Falcon News'
+title = 'Falcon News | an website of all genre entertainment news'
 weight = 2
 [languages.en.params]
 subtitle = 'Reference, Tutorials, and Explanations'
