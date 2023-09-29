@@ -103,7 +103,7 @@ def get_metadata(article_url):
         print(f"Error retrieving metadata for {article_url}: {e}")
         return {}
 
-def generate_hugo_posts(rss_urls, site_no, site_name, article_urls, output_dir, news_date, wordlist):
+def generate_hugo_posts(rss_urls, site_no, site_name, article_urls, output_dir, news_date, ex_wordlist):
     articles_list = []
     now = datetime.now()
 
@@ -180,36 +180,26 @@ def generate_hugo_posts(rss_urls, site_no, site_name, article_urls, output_dir, 
 
             articles_list.append(article)
 
-            title = safe_yaml(article['title'], wordlist)
-            # images = safe_yaml(article['images'])
-            # videos = safe_yaml(article['movies'])
-            body = safe_yaml(html.unescape(article['body']), wordlist)
-            full_url = safe_yaml(html.unescape(article['full_url']), wordlist)
+            title = clean_yaml(article['title'], ex_wordlist)
+            # images = clean_yaml(article['images'])
+            # videos = clean_yaml(article['movies'])
+
+            body = clean_html_tags(html.unescape(article['body']))
+            body = clean_html_and_js_tags(body)
+            body = clean_url(body)
+            body = clean_yaml(body, ex_wordlist)
+
+            full_url = clean_yaml(html.unescape(article['full_url']), ex_wordlist)
 
             encoded_url = base64.urlsafe_b64encode(full_url.encode()).decode()
 
             if not article["tags"]:
                 print(article["tags"])
-                filter_dict = {
-                    r'(.)\1+':'',
-                    r'\d+': '',
-                    r'([ぁ-んー])\1+': '',
-                    r'([ァ-ンー])\1+': '',
-                    # r'[ぁ-んー]{2,}': '',
-                    # r'[ァ-ンー]{2,}': '',
-                    # r'[一-鿄]{1,2}': '',
-                    # r'\b[a-zA-Z]{1,2}\b': '',
-                    # 'いる': '',
-                    # 'ある': '',
-                    # 'です': '',
-                }
 
-                tags = nlp_process(article["title"], filter_dict)
+                tags = nlp_process(article["title"], ex_wordlist)
                 encoded_tags = []
                 for tag in tags:
                     encoded_tags.append(base64.urlsafe_b64encode(tag.encode()).decode())
-
-
 
             with open(file_path, 'w', encoding='utf-8') as f:
             # with open(file_path, 'w', encoding='cp932') as f:
@@ -259,7 +249,7 @@ def generate_hugo_posts(rss_urls, site_no, site_name, article_urls, output_dir, 
                 print(f'Not Exist {file_path}')
             print(e)
 
-def safe_yaml(text, wordlist):
+def clean_yaml(text, ex_wordlist):
     char_mapping = {
         # ':': '\:',
         # '-': '\-',
@@ -275,7 +265,7 @@ def safe_yaml(text, wordlist):
         '\u3000': ' ',
     }
 
-    exception_words = Interface.read_file(wordlist)
+    exception_words = Interface.read_file(ex_wordlist)
     items = exception_words.get('items')
 
     if items:
@@ -285,7 +275,7 @@ def safe_yaml(text, wordlist):
                 char_mapping.update(item)
         # char_mapping.update(exception_words)
 
-    print(f'char_mapping: \n\n{char_mapping}')
+    # print(f'char_mapping: \n\n{char_mapping}')
 
     for char, replacement in char_mapping.items():
         text = text.replace(char, replacement)
@@ -314,13 +304,66 @@ def safe_yaml(text, wordlist):
 
     return text
 
-def nlp_process(title, filter_dict, num_keywords=3):
+def clean_html_tags(html_text):
+    soup = BeautifulSoup(html_text, 'html.parser')
+    cleaned_text = soup.get_text()
+    cleaned_text = ''.join(cleaned_text.splitlines())
+    return cleaned_text
+
+def clean_html_and_js_tags(html_text):
+    soup = BeautifulSoup(html_text, 'html.parser')
+    [x.extract() for x in soup.findAll(['script', 'style'])]
+    cleaned_text = soup.get_text()
+    cleaned_text = ''.join(cleaned_text.splitlines())
+    return cleaned_text
+
+def clean_url(html_text):
+    """
+    \S+ matches all non-whitespace characters (the end of the url)
+    :param html_text:
+    :return:
+    """
+    clean_text = re.sub(r'http\S+', '', html_text)
+    return clean_text
+
+def nlp_process(title, ex_wordlist, num_keywords=3):
+    char_mapping = {
+        r'[【】]': ' ',
+        r'[（）()]': ' ',
+        r'[［］\[\]]': ' ',
+        r'[@＠]\w+': '',
+        r'https?:\/\/.*?[\r\n ]': '',
+        r'(.)\1+':'',
+        r'　': ' ',
+        r'[　 ]+': '',
+        r'\d+': '',
+        r'([ぁ-んー])\1+': '',
+        r'[ぁ-んー]{1,3}': '',
+        # r'([ァ-ンー])\1+': '',
+        # r'[ぁ-んー]{,2}': '',
+        # r'[ァ-ンー]{,2}': '',
+        # r'[一-鿄]{,2}': '',
+        # r'\b[a-zA-Z]{1,2}\b': '',
+        # 'いる': '',
+        # 'ある': '',
+        # 'です': '',
+    }
+
+    exception_words = Interface.read_file(ex_wordlist)
+    items = exception_words.get('items')
+
+    if items:
+        exception_words = {}
+        for item in items:
+            if isinstance(item, dict):
+                char_mapping.update(item)
+
     # 形態素解析
     tokenizer = Tokenizer()
     tokens = [token.surface for token in tokenizer.tokenize(title)]
 
     # 除外語フィルターを適用
-    for pattern, replacement in filter_dict.items():
+    for pattern, replacement in char_mapping.items():
         tokens = [token if not re.search(pattern, token) else replacement for token in tokens]
 
     # 形態素をスペースで連結
@@ -458,7 +501,7 @@ def main():
     parser.add_argument("-sl", "--site_limit", type=int, default=None, help="Limit of the number of websites to process")
     parser.add_argument("-r", "--random", action="store_true", help="Get random site order")
     parser.add_argument("-s", "--shuffle", action="store_true", help="[WIP] Shuffle output articles order")
-    parser.add_argument("-w", "--wordlist", help="[WIP] Pass a wordlist of various purpose")
+    parser.add_argument("-w", "--ex_wordlist", help="[WIP] Pass a ex_wordlist of various purpose")
     parser.usage = f"""
     1. Execute the process without input file (use dict in script)
 
@@ -506,7 +549,7 @@ def main():
     for site_no, (site_name, rss_url) in enumerate(rss_urls.items()):
         feed = feedparser.parse(rss_url)
         article_urls = [entry.link for entry in feed.entries[:limit]]
-        generate_hugo_posts(rss_urls, site_no, site_name, article_urls, args.output_dir, args.news_date, args.wordlist)
+        generate_hugo_posts(rss_urls, site_no, site_name, article_urls, args.output_dir, args.news_date, args.ex_wordlist)
 
     remove_old_hugo_posts(args.output_dir, max_posts=1000)
 

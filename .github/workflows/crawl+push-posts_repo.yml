@@ -47,7 +47,7 @@ jobs:
 
       - name: Run Python script
         run: |
-          python scripts/run.py -i data/feeds.yaml -w data/exception_words.yaml -r -sl 10
+          python scripts/run.py -i data/feeds.yaml -w data/merged.yaml -r -sl 10
           python scripts/dup_checker.py content/post -d --skip 1-23 -r -f
 
 
