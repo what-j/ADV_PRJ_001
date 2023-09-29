@@ -184,10 +184,11 @@ def generate_hugo_posts(rss_urls, site_no, site_name, article_urls, output_dir, 
             # images = clean_yaml(article['images'])
             # videos = clean_yaml(article['movies'])
 
-            body = clean_html_tags(html.unescape(article['body']))
-            body = clean_html_and_js_tags(body)
-            body = clean_url(body)
-            body = clean_yaml(body, ex_wordlist)
+            # body = clean_html_tags(html.unescape(article['body']))
+            # body = clean_html_and_js_tags(body)
+            # body = clean_url(body)
+            # body = clean_yaml(body, ex_wordlist)
+            body = clean_yaml(html.unescape(article['body']), ex_wordlist)
 
             full_url = clean_yaml(html.unescape(article['full_url']), ex_wordlist)
 
@@ -328,11 +329,11 @@ def clean_url(html_text):
 
 def nlp_process(title, ex_wordlist, num_keywords=3):
     char_mapping = {
-        r'[【】]': ' ',
-        r'[（）()]': ' ',
-        r'[［］\[\]]': ' ',
-        r'[@＠]\w+': '',
-        r'https?:\/\/.*?[\r\n ]': '',
+        # r'[【】]': ' ',
+        # r'[（）()]': ' ',
+        # r'[［］\[\]]': ' ',
+        # r'[@＠]\w+': '',
+        # r'https?:\/\/.*?[\r\n ]': '',
         r'(.)\1+':'',
         r'　': ' ',
         # r'[　 ]+': ' ',
