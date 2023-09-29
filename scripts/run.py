@@ -335,7 +335,7 @@ def nlp_process(title, ex_wordlist, num_keywords=3):
         r'https?:\/\/.*?[\r\n ]': '',
         r'(.)\1+':'',
         r'　': ' ',
-        r'[　 ]+': '',
+        # r'[　 ]+': ' ',
         r'\d+': '',
         r'([ぁ-んー])\1+': '',
         r'[ぁ-んー]{1,3}': '',
