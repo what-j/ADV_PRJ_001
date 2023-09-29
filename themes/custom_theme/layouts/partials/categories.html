@@ -1,0 +1,15 @@
+<ul class="dropdown-menu">
+    {{ $categories := .Site.Taxonomies.categories }}
+    {{ $categoryList := slice }}
+    {{ range $i, $e := $categories }}
+        {{ $categoryList = $categoryList | append $i }}
+    {{ end }}
+    {{ $shuffledCategories := shuffle $categoryList }}
+    {{ $count := 0 }}
+    {{ range $shuffledCategories }}
+        {{ if lt $count 50 }}
+            <li><a href="{{ relURL (print "categories/" . | urlize) }}">{{ . }}</a></li>
+        {{ end }}
+        {{ $count = add $count 1 }}
+    {{ end }}
+</ul>

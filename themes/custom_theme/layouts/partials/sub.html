@@ -13,28 +13,13 @@
     <div class="scroll-box-sub">
         <h2>カテゴリ</h2>
         <div class="categories">
-            <ul class="dropdown-menu">
-            {{ $categories := .Site.Taxonomies.categories }}
-            {{ range $i, $e := $categories }}
-                <li><a href="{{ relURL (print "categories/" $i | urlize) }}">{{ $i }}</a></li>
-            {{ end }}
-            </ul>
+            {{ partial "categories.html" . }}
         </div>
     </div>
     <div class="scroll-box-sub">
         <h2>タグ</h2>
         <div class="tags">
-            <ul>
-            {{ $tags := .Site.Taxonomies.tags }}
-            {{ $count := 0 }}
-            {{ range $tagName, $tag := $tags }}
-                {{ if lt $count 50 }}
-                {{ $encodedTagName := urlquery $tagName }}
-                <li><a href="{{ relURL (print "tags/" $encodedTagName | safeURL ) }}">{{ $tagName }}</a></li>
-                {{ end }}
-                {{ $count = add $count 1 }}
-            {{ end }}
-            </ul>
+            {{ partial "tags.html" . }}
         </div>
     </div>
 <div class="scroll-box-sub-pr">

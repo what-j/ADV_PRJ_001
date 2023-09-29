@@ -1,0 +1,16 @@
+<ul>
+    {{ $tags := .Site.Taxonomies.tags }}
+    {{ $tagList := slice }}
+    {{ range $tagName, $tag := $tags }}
+        {{ $tagList = $tagList | append $tagName }}
+    {{ end }}
+    {{ $shuffledTags := shuffle $tagList }}
+    {{ $count := 0 }}
+    {{ range $shuffledTags }}
+        {{ if lt $count 50 }}
+            {{ $encodedTagName := urlquery . }}
+            <li><a href="{{ relURL (print "tags/" $encodedTagName | safeURL ) }}">{{ . }}</a></li>
+        {{ end }}
+        {{ $count = add $count 1 }}
+    {{ end }}
+</ul>
