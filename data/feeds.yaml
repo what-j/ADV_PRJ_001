@@ -142,14 +142,6 @@ items:
   limit: 1
   feed_url:
   - http://trendcatch2020.com/atom.xml
-- name: ocalt
-  url: http://ocalt.work/
-  categories: エンタメ
-  tags: []
-  locale: ja-jp
-  limit: 1
-  feed_url:
-  - http://ocalt.work/index.rdf
 - name: itsys-tech
   url: https://manga.itsys-tech.com/
   categories: エンタメ
